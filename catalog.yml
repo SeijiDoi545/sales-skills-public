@@ -1,0 +1,6 @@
+# 全社のスキル一覧に載せるタイトルと概要（人手で記載）
+department: sales
+skills:
+  competitor-brief:
+    title: "競合比較ブリーフ"
+    summary: "指定した競合他社について、公開情報から製品・価格帯・強み弱みの比較表を作る。"

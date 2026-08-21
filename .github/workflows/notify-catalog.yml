@@ -1,0 +1,32 @@
+# スキル（skills/ 以下）か catalog.yml が main に入ったら、skill-catalog リポジトリに更新を知らせる。
+# 必要な設定（このリポジトリの Settings > Secrets and variables > Actions）:
+#   Secret  CATALOG_DISPATCH_TOKEN : skill-catalog への書き込み権限（Contents: Read and write）を持つトークン
+#   Variable CATALOG_REPO（任意）   : 通知先。省略時は <持ち主>/skill-catalog
+name: スキル一覧に更新を通知
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "skills/**"
+      - "catalog.yml"
+  workflow_dispatch:
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: skill-catalog に通知する
+        env:
+          GH_TOKEN: ${{ secrets.CATALOG_DISPATCH_TOKEN }}
+          CATALOG_REPO: ${{ vars.CATALOG_REPO || format('{0}/skill-catalog', github.repository_owner) }}
+        run: |
+          if [ -z "$GH_TOKEN" ]; then
+            echo "::error::Secret CATALOG_DISPATCH_TOKEN が登録されていません"
+            exit 1
+          fi
+          gh api "repos/$CATALOG_REPO/dispatches" \
+            -f event_type=skills-updated \
+            -f "client_payload[repo]=${{ github.repository }}" \
+            -f "client_payload[sha]=${{ github.sha }}"
+          echo "$CATALOG_REPO に更新を通知しました" >> "$GITHUB_STEP_SUMMARY"

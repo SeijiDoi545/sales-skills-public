@@ -4,3 +4,6 @@ skills:
   competitor-brief:
     title: "競合比較ブリーフ"
     summary: "指定した競合他社について、公開情報から製品・価格帯・強み弱みの比較表を作る。"
+  meeting-minutes-crm:
+    title: "商談議事録のCRM登録"
+    summary: "商談の録音文字起こしやメモから議事録を作り、CRMの商談記録の形式に整える。"

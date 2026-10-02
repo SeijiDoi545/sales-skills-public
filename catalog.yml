@@ -7,3 +7,6 @@ skills:
   meeting-minutes-crm:
     title: "商談議事録のCRM登録"
     summary: "商談の録音文字起こしやメモから議事録を作り、CRMの商談記録の形式に整える。"
+  quote-checker:
+    title: "見積書チェック"
+    summary: "見積書の値引率・支払条件・有効期限を社内基準と照合し、承認が必要な項目を指摘する。"

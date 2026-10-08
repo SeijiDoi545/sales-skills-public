@@ -10,3 +10,6 @@ skills:
   quote-checker:
     title: "見積書チェック"
     summary: "見積書の値引率・支払条件・有効期限を社内基準と照合し、承認が必要な項目を指摘する。"
+  proposal-drafter:
+    title: "提案書ドラフト作成"
+    summary: "顧客情報とヒアリングメモから、提案書の構成案と本文の下書きを作成する。"
